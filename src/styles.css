@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.mxwd-480 {
+  max-width: 480px;
+}
+
+.wd100p {
+  width: 100%;
+}
+
+.hei100p {
+  height: 100%;
+}
+.bg-dark-blue {
+    background-color: #4757C4;
+}
+.bg-white-blue {
+    background-color: #E7F0FB;
+}
+.bg-indigo-blue {
+    background-color: #4757C4;
+}
+.bg-white-gray {
+    background-color: #AEBBC9;
+}

@@ -1,0 +1,24 @@
+<app-chat-header [name]="name"></app-chat-header>
+<div class="chat-home mxwd">
+
+  <div class="message-board" #messageBoard>
+    <ul class="message-viewer" #messageBox></ul>
+  </div>
+
+  <div class="input-form">
+
+    <div class="message-form">
+      <input type="text" [(ngModel)]="input_value" placeholder="메시지를 입력하세요."/>
+    </div>
+
+    <div class="tool-form bg-white-blue">
+      <div>
+
+      </div>
+      <button class="bg-dark-blue" *ngIf="input_value.length > 0" (click)="sendMessage()"></button>
+      <button class="bg-white-gray" *ngIf="input_value.length == 0"></button>
+    </div>
+
+  </div>
+
+</div>
