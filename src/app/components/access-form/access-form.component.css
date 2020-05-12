@@ -4,8 +4,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
   position: absolute;
-  padding: 0 68px;
-  max-width: 480px;
+  padding: 0 48px;
   min-height: 320px;
 }
 .box {

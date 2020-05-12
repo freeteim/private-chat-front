@@ -1,11 +1,12 @@
-<app-chat-header [name]="name"></app-chat-header>
+<app-chat-header></app-chat-header>
 <div class="chat-home mxwd">
 
   <div class="message-board" #messageBoard>
     <ul class="message-viewer" #messageBox></ul>
+    <!-- <app-message *ngFor="let node of message_list" [access_info]="node"></app-message> -->
   </div>
 
-  <div class="input-form">
+  <div class="input-form mxwd">
 
     <div class="message-form">
       <input type="text" [(ngModel)]="input_value" placeholder="메시지를 입력하세요."/>

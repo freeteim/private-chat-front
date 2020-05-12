@@ -1,0 +1,19 @@
+<div class="message" 
+[ngClass]="{'mine-message':access_info.mine, 'other-message': access_info.mine}">
+
+  <div class="profile-picture">
+    <div></div>
+
+    <!--[ngClass]=”{‘aClass’ : true, ‘bClass’: true}”-->
+  </div>
+
+  <div>
+
+    <div class="name-label bold">{{ access_info.name }}</div>
+    <div class="text-box">
+      {{ access_info.message }}
+    </div>
+
+  </div>
+
+</div>

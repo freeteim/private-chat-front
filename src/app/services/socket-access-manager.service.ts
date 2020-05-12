@@ -10,11 +10,11 @@ import { AccessInfo } from '../models/access_info.model';
 export class SocketAccessManagerService {
 
   socket = null;
-  _access_info = null;
-  set access_info(val) { this._access_info = val; }
-  get access_info() {
-    return this._access_info;
-  }
+  // _access_info = null;
+  // set access_info(val) { this._access_info = val; }
+  // get access_info() {
+  //   return this._access_info;
+  // }
 
   constructor() {
   }
@@ -29,7 +29,7 @@ export class SocketAccessManagerService {
       this.socket.on('join_room', message => {
         observer.next(message);
       });
-      this._access_info = access_info;
+      // this._access_info = access_info;
       this.socket.emit('join_room', access_info);
       return () => {
         this.socket.disconnect();

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SocketAccessManagerService } from 'src/app/services/socket-access-manager.service';
 import { AccessInfo } from 'src/app/models/access_info.model';
+import { AccessInfoStateService } from 'src/app/services/access-info-state.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-chat-home',
@@ -16,22 +18,24 @@ export class ChatHomeComponent implements OnInit {
   @ViewChild('messageBox') messageBox;
   @ViewChild('messageBoard') messageBoard;
 
+  message_list: Array<AccessInfo> = [];
+
   constructor(
-    private socketAccessManagerService: SocketAccessManagerService
+    private socketAccessManagerService: SocketAccessManagerService,
+    private accessInfoStateService: AccessInfoStateService
   ) { }
 
   ngOnInit() {
     this.socket = this.socketAccessManagerService.getSocket();
     this.socket.on('receive', (message) => {
-      this.addMessageList(message);
+      this.addMessage(message);
     });
-    this.name = this.socketAccessManagerService._access_info.name;
   }
 
   ngAfterViewInit() {
     window.addEventListener('keydown', (e) => {
       if(e.keyCode === 13 && this.input_value != '') {
-        this.sendMessage();
+        this.emitMessage();
         setTimeout(() => {
           this.scrollBottom();
         }, 100);
@@ -39,7 +43,13 @@ export class ChatHomeComponent implements OnInit {
     });
   }
 
-  addMessageList(message) {
+  addMessage(message) {
+
+    const access_info = new AccessInfo(message);
+    access_info.mine = access_info.equal(this.accessInfoStateService.access_info._name);
+
+    // this.message_list.push(access_info);
+
     const li = document.createElement('li');
     let text = '';
     text += `[${message['_date']}] `;
@@ -49,22 +59,9 @@ export class ChatHomeComponent implements OnInit {
     this.messageBox.nativeElement.appendChild(li);
   }
 
-  parseDate() {
-    const date = new Date();
-    let text = '';
-    text += date.getFullYear() + '.';
-    text += ((date.getMonth() + 1) + '').padStart(2, '0') + '.';
-    text += (date.getDate() + '').padStart(2, '0') + ' ';
-    text += (date.getHours() + '').padStart(2, '0') + ':';
-    text += (date.getMinutes() + '').padStart(2, '0');
-    return text;
-  }
-
-  sendMessage() {
-
-    const access_info: AccessInfo = this.socketAccessManagerService.access_info;
+  emitMessage() {
+    const access_info: AccessInfo = new AccessInfo(this.accessInfoStateService.access_info);
     access_info.message = this.input_value;
-    access_info.date = this.parseDate();
     this.socketAccessManagerService.emit(access_info);
     this.clearTextBox();
   }

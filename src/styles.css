@@ -11,8 +11,8 @@ body {
   height: 100%;
 }
 
-.mxwd-480 {
-  max-width: 480px;
+.mxwd {
+  max-width: 410px;
 }
 
 .wd100p {
@@ -33,4 +33,10 @@ body {
 }
 .bg-white-gray {
     background-color: #AEBBC9;
+}
+.bg-sky-blue {
+  background-color: rgb(214, 222, 255);
+}
+.bold {
+  font-weight: bold;
 }

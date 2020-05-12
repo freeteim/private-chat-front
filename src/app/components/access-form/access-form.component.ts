@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SocketAccessManagerService } from 'src/app/services/socket-access-manager.service';
 import { AccessInfo } from 'src/app/models/access_info.model';
+import { AccessInfoStateService } from 'src/app/services/access-info-state.service';
 
 @Component({
   selector: 'app-access-form',
@@ -16,22 +17,29 @@ export class AccessFormComponent implements OnInit {
   @Output('outputShow') outputShow = new EventEmitter();
 
   constructor(
-    private socketAccessManagerService: SocketAccessManagerService
+    private socketAccessManagerService: SocketAccessManagerService,
+    private accessInfoStateService: AccessInfoStateService
   ) { }
 
   ngOnInit() {
   }
 
   onAccessClick() {
-    
+
     this.onConnection();
 
   }
 
   onConnection() {
-    const access_info = new AccessInfo(this.access_id, this.name);
-    this.socketAccessManagerService.connect(access_info).subscribe(message => {
+    const access_info = new AccessInfo({
+      _access_id: this.access_id, 
+      _name: this.name
+    });
+    this.socketAccessManagerService.connect(access_info).subscribe((message: AccessInfo) => {
       this.outputShow.emit(true);
+      this.accessInfoStateService.access_info = access_info;
+
+      // ??? 님이 입장하셨습니다 기능
     });
   }
 }
