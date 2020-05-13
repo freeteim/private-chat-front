@@ -33,7 +33,7 @@ export class ChatHomeComponent implements OnInit {
 
   ngAfterViewInit() {
     window.addEventListener('keydown', (e) => {
-      if(e.keyCode === 13 && this.input_value != '') {
+      if (e.keyCode === 13 && this.input_value != '') {
         this.emitMessage();
       }
     });
@@ -45,6 +45,7 @@ export class ChatHomeComponent implements OnInit {
     access_info.mine = access_info.equal(this.accessInfoStateService.access_info._name);
 
     this.message_list.push(access_info);
+    this.scrollDown();
   }
 
   emitMessage() {
@@ -52,16 +53,16 @@ export class ChatHomeComponent implements OnInit {
     access_info.message = this.input_value;
     this.socketAccessManagerService.emit(access_info);
     this.clearTextBox();
-    setTimeout(() => {
-      this.scrollBottom();
-    }, 100);
+    this.scrollDown();
   }
 
   clearTextBox() {
     this.input_value = '';
   }
-  scrollBottom() {
-    const el: HTMLDivElement = this.messageBoard.nativeElement;
-    el.scrollTo(0, el.scrollHeight);
+  scrollDown() {
+    setTimeout(() => {
+      const el: HTMLDivElement = this.messageBoard.nativeElement;
+      el.scrollTo(0, el.scrollHeight);
+    }, 100);
   }
 }

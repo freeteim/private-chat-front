@@ -12,7 +12,6 @@ export class OtherMessageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.access_info);
   }
 
 }

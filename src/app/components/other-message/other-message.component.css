@@ -1,5 +1,5 @@
 .message {
-  margin: 6px;
+  padding: 12px 6px;
 }
 
 .profile-picture {
@@ -36,4 +36,5 @@
   border-radius: 1px;
   padding: 6px 12px;
   word-break: break-word;
+  font-size: 12.5px;
 }

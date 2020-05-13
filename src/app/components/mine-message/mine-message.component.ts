@@ -13,7 +13,6 @@ export class MineMessageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.access_info);
   }
 
 }
