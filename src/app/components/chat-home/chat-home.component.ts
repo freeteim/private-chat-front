@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SocketAccessManagerService } from 'src/app/services/socket-access-manager.service';
 import { AccessInfo } from 'src/app/models/access_info.model';
 import { AccessInfoStateService } from 'src/app/services/access-info-state.service';
-import { MessageComponent } from '../message/message.component';
+import { MineMessageComponent } from '../mine-message/mine-message.component';
 
 @Component({
   selector: 'app-chat-home',
@@ -15,7 +15,6 @@ export class ChatHomeComponent implements OnInit {
   socket = null;
   name: string = '';
 
-  @ViewChild('messageBox') messageBox;
   @ViewChild('messageBoard') messageBoard;
 
   message_list: Array<AccessInfo> = [];
@@ -36,9 +35,6 @@ export class ChatHomeComponent implements OnInit {
     window.addEventListener('keydown', (e) => {
       if(e.keyCode === 13 && this.input_value != '') {
         this.emitMessage();
-        setTimeout(() => {
-          this.scrollBottom();
-        }, 100);
       }
     });
   }
@@ -48,15 +44,7 @@ export class ChatHomeComponent implements OnInit {
     const access_info = new AccessInfo(message);
     access_info.mine = access_info.equal(this.accessInfoStateService.access_info._name);
 
-    // this.message_list.push(access_info);
-
-    const li = document.createElement('li');
-    let text = '';
-    text += `[${message['_date']}] `;
-    text += `${message['_name']} : `;
-    text += message['_message'];
-    li.innerText = text;
-    this.messageBox.nativeElement.appendChild(li);
+    this.message_list.push(access_info);
   }
 
   emitMessage() {
@@ -64,6 +52,9 @@ export class ChatHomeComponent implements OnInit {
     access_info.message = this.input_value;
     this.socketAccessManagerService.emit(access_info);
     this.clearTextBox();
+    setTimeout(() => {
+      this.scrollBottom();
+    }, 100);
   }
 
   clearTextBox() {

@@ -8,7 +8,8 @@ import { AccessFormComponent } from './components/access-form/access-form.compon
 import { SocketAccessManagerService } from './services/socket-access-manager.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
-import { MessageComponent } from './components/message/message.component';
+import { MineMessageComponent } from './components/mine-message/mine-message.component';
+import { OtherMessageComponent } from './components/other-message/other-message.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MessageComponent } from './components/message/message.component';
     ChatHomeComponent,
     AccessFormComponent,
     ChatHeaderComponent,
-    MessageComponent
+    MineMessageComponent,
+    OtherMessageComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ body {
 }
 
 .mxwd {
-  max-width: 410px;
+  max-width: 500px;
 }
 
 .wd100p {
@@ -31,12 +31,18 @@ body {
 .bg-indigo-blue {
     background-color: #4757C4;
 }
-.bg-white-gray {
+.bg-normal-gray {
     background-color: #AEBBC9;
+}
+.bg-light-gray {
+  background-color: #ECEEF3;
 }
 .bg-sky-blue {
   background-color: rgb(214, 222, 255);
 }
 .bold {
   font-weight: bold;
+}
+input {
+  outline: none;
 }

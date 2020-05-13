@@ -2,8 +2,12 @@
 <div class="chat-home mxwd">
 
   <div class="message-board" #messageBoard>
-    <ul class="message-viewer" #messageBox></ul>
+    <!-- <ul class="message-viewer" #messageBox></ul> -->
     <!-- <app-message *ngFor="let node of message_list" [access_info]="node"></app-message> -->
+    <ng-container *ngFor="let node of message_list">
+      <app-mine-message *ngIf="node.mine == true" [access_info]="node"></app-mine-message>
+      <app-other-message *ngIf="node.mine == false" [access_info]="node"></app-other-message>
+    </ng-container>
   </div>
 
   <div class="input-form mxwd">
@@ -16,8 +20,8 @@
       <div>
 
       </div>
-      <button class="bg-dark-blue" *ngIf="input_value.length > 0" (click)="sendMessage()"></button>
-      <button class="bg-white-gray" *ngIf="input_value.length == 0"></button>
+      <button class="bg-dark-blue" *ngIf="input_value.length > 0" (click)="emitMessage()"></button>
+      <button class="bg-normal-gray" *ngIf="input_value.length == 0"></button>
     </div>
 
   </div>

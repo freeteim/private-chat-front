@@ -1,0 +1,72 @@
+.message {
+  margin: 6px;
+}
+.profile-picture {
+    display: inline-block;
+    margin: 8px 6px 2px 6px;
+    vertical-align: top;
+}
+.profile-picture>div {
+  width: 33px;
+  height: 33px;
+  border: none;
+  padding: 10px;
+  border-radius: 18px;
+  margin: 1px 0px;
+  background-color: #AEBBC9;
+  display: inline-block;
+}
+.wrap-content {
+    display: inline-block;
+    width: 80%;
+    padding: 0 0 0 12px;
+}
+.name-label {
+    display: inline-block;
+    line-height: 24px;
+}
+.text-box {
+    display: inline-block;
+    border-radius: 1px;
+    padding: 6px 12px;
+    word-break: break-word;
+}
+
+/* left */
+/* .mine-message>div {
+  display: inline;
+}
+.mine-message .text-box {
+  background-color: rgb(214, 222, 255);
+}
+.mine-message .name-label {
+  display: inline;
+}
+.mine-message .text-box {
+  display: inline;
+} */
+/* right */
+/* .other-message {
+  float: right;
+} */
+/* 공통 */
+/* .message {
+  margin: 6px;
+}
+.message>div :nth-child(1) {
+  margin: 4px 8px;
+}
+.message>div :nth-child(2) {
+  width: 80%;
+  border-radius: 2px;
+}
+.profile-picture>div {
+  width: 33px;
+  height: 33px;
+  border: none;
+  padding: 10px;
+  border-radius: 18px;
+  margin: 1px 0px;
+  background-color: #AEBBC9;
+  display: inline-block;
+} */

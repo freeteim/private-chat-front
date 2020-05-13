@@ -25,9 +25,13 @@ export class AccessFormComponent implements OnInit {
   }
 
   onAccessClick() {
-
     this.onConnection();
+  }
 
+  ngAfterViewInit() {
+    // setTimeout(()=>{
+    //   this.onAccessClick();
+    // }, 500);
   }
 
   onConnection() {
