@@ -6,6 +6,7 @@
   position: absolute;
   padding: 0 48px;
   min-height: 320px;
+  text-align: center;
 }
 .box {
     background-color: white;

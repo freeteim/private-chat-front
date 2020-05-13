@@ -24,14 +24,14 @@ export class AccessFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAccessClick() {
-    this.onConnection();
+  onEnter($event) {
+    if (this.access_id.length > 0 && this.name.length > 0) {
+      this.onConnection();
+    }
   }
 
-  ngAfterViewInit() {
-    // setTimeout(()=>{
-    //   this.onAccessClick();
-    // }, 500);
+  onAccessClick() {
+    this.onConnection();
   }
 
   onConnection() {

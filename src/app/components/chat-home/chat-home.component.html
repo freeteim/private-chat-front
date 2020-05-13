@@ -2,8 +2,6 @@
 <div class="chat-home mxwd">
 
   <div class="message-board" #messageBoard>
-    <!-- <ul class="message-viewer" #messageBox></ul> -->
-    <!-- <app-message *ngFor="let node of message_list" [access_info]="node"></app-message> -->
     <ng-container *ngFor="let node of message_list">
       <app-mine-message *ngIf="node.mine == true" [access_info]="node"></app-mine-message>
       <app-other-message *ngIf="node.mine == false" [access_info]="node"></app-other-message>
@@ -13,7 +11,7 @@
   <div class="input-form mxwd">
 
     <div class="message-form">
-      <input type="text" [(ngModel)]="input_value" placeholder="메시지를 입력하세요."/>
+      <input type="text" [(ngModel)]="input_value" placeholder="메시지를 입력하세요." enter (outputEnter)="onEnter($event)" autofocus/>
     </div>
 
     <div class="tool-form bg-white-blue">

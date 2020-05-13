@@ -3,13 +3,13 @@
     <div class="wrap-input">
       <div class="row">
         <div>
-          <input type="text" placeholder="ACCESS ID" [(ngModel)]="access_id"/>
+          <input type="text" placeholder="ACCESS ID" [(ngModel)]="access_id" enter (outputEnter)="onEnter($event)" autofocus/>
         </div>
       </div>
 
       <div class="row">
         <div>
-          <input type="text" placeholder="NAME" [(ngModel)]="name"/>
+          <input type="text" placeholder="NAME" [(ngModel)]="name" enter (outputEnter)="onEnter($event)"/>
         </div>
       </div>
     </div>

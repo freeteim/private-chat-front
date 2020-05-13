@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { MineMessageComponent } from './components/mine-message/mine-message.component';
 import { OtherMessageComponent } from './components/other-message/other-message.component';
+import { ButtonEnterDirective } from './directive/button-enter.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { OtherMessageComponent } from './components/other-message/other-message.
     AccessFormComponent,
     ChatHeaderComponent,
     MineMessageComponent,
-    OtherMessageComponent
+    OtherMessageComponent,
+    ButtonEnterDirective,
+    ButtonEnterDirective
   ],
   imports: [
     BrowserModule,

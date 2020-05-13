@@ -31,19 +31,9 @@ export class ChatHomeComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    window.addEventListener('keydown', (e) => {
-      if (e.keyCode === 13 && this.input_value != '') {
-        this.emitMessage();
-      }
-    });
-  }
-
   addMessage(message) {
-
     const access_info = new AccessInfo(message);
     access_info.mine = access_info.equal(this.accessInfoStateService.access_info._name);
-
     this.message_list.push(access_info);
     this.scrollDown();
   }
@@ -59,10 +49,15 @@ export class ChatHomeComponent implements OnInit {
   clearTextBox() {
     this.input_value = '';
   }
+
   scrollDown() {
     setTimeout(() => {
       const el: HTMLDivElement = this.messageBoard.nativeElement;
       el.scrollTo(0, el.scrollHeight);
     }, 100);
+  }
+
+  onEnter($event) {
+    this.emitMessage();
   }
 }
